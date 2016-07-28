@@ -1,0 +1,70 @@
+﻿@model TicketTrader.Models.DisplayListingsViewModel
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "ViewListingsByEvent";
+}
+
+<h2>Listings for @Model.Event.Band.Name -- @Model.Event.Date, @Model.Event.Venue</h2>
+
+@if (Model.Listings == null)
+{
+    <h3>There are no current listings for this show</h3>
+}
+
+else
+{ 
+    <p>
+        @Html.ActionLink("Create New", "Create", "Listing", new { eventId = Model.Event.EventId }, null)
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Listings.First().Title)
+        
+
+            <th>
+                @Html.DisplayNameFor(model => model.Listings.First().ListingType.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listings.First().Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listings.First().Price)
+            </th>
+
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model.Listings) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+       
+            <td>
+                @Html.DisplayFor(modelItem => item.ListingType.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("View Listing", "ViewSelected", "Listing", new { id = item.ListingId}, null)
+            </td>
+
+            @if(User.Identity.GetUserId() == item.UserId)
+            { 
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.ListingId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.ListingId })
+                </td>
+            }
+        </tr>
+    }
+
+    </table>
+    @Html.ActionLink("Return to list", "Upcoming", "Event", new { id = Model.Event.BandId}, null)
+}

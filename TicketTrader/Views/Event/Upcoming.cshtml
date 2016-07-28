@@ -1,0 +1,71 @@
+﻿@model TicketTrader.Models.DisplayEventViewModel
+@using System.Linq
+
+
+@{
+    ViewBag.Title = "Upcoming";
+}
+
+<h2>Upcoming Events For @Model.Band.Name</h2>
+
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Create New", "Create", "Event", new { bandId = @Model.Band.BandId }, null)
+    }
+</p>
+
+@if( @Model.Events == null)
+{
+    <h3 style="align-content='center'">@Html.Raw(ViewBag.Band) has no upcoming events scheduled</h3>
+}
+else{
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Events.First().Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Events.First().Venue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Events.First().City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Events.First().State)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Events) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Venue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        @if (User.IsInRole("Admin")) 
+        { 
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.EventId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.EventId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.EventId })
+            </td>
+        }
+        <td>
+            @Html.ActionLink("See listings for event", "ViewListingsByEvent", "Listing", new { id = item.EventId }, null)
+        </td>
+    </tr>
+}
+
+</table>
+}
+
+@Html.ActionLink("Return to List", "Index", "Band")

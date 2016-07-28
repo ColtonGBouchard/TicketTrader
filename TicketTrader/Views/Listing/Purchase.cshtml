@@ -1,0 +1,48 @@
+﻿@model TicketTrader.Models.DisplayListingsViewModel
+@using Microsoft.AspNet.Identity;
+
+
+@{
+    ViewBag.Title = "Purchase";
+}
+
+
+
+<div id="purchaseInfo">
+    @Model.Event.Band.Name
+    @Model.Event.Date
+    @Model.Event.Venue
+    @Model.Listings.First().Price;
+</div>
+
+
+<div class="demo-container">
+    <div class="card-wrapper"></div>
+
+    <div class="form-container active">
+        <form action="" id="creditCard">
+                <input placeholder="Card number" type="text" name="number" class="number" id="ccInput">
+                <input placeholder="Full name" type="text" name="name" class="name" id="ccInput">
+                <input placeholder="MM/YY" type="text" name="expiry" class="expiry" id="ccInput">
+                <input placeholder="CVC" type="text" name="cvc" class="cvc" id="ccInput">
+            <button class="btn btn-default">Submit</button> 
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $('form').card({
+            // a selector or jQuery object for the container
+            // where you want the card to appear
+            container: '.card-wrapper', // *required*
+            numberInput: '.number', // optional — default input[name="number"]
+            expiryInput: '.expiry', // optional — default input[name="expiry"]
+            cvcInput: '.cvc', // optional — default input[name="cvc"]
+            nameInput: '.name', // optional - defaults input[name="name"]
+            formatting: true // optional - default true
+        });
+    </script>
+
+ }
