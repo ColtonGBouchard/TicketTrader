@@ -34,7 +34,7 @@ namespace TicketTrader.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,Name")] Band band)
+        public ActionResult Create(Band band)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace TicketTrader.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="BandId,Name")] Band band)
+        public ActionResult Edit(Band band)
         {
             if (ModelState.IsValid)
             {

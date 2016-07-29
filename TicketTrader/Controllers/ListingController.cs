@@ -141,28 +141,7 @@ namespace TicketTrader.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public ActionResult Purchase(int id)
-        {
-            var listingDao = new ListingDao(db);
-
-            var selectedListing = listingDao.GetListById(id);
-
-            var model = new DisplayListingsViewModel(selectedListing);
-
-            var totalPrice = model.Listings.First().Quantity * model.Listings.First().Price;
-            model.Listings.First().Price = totalPrice;
-
-            return View(model);
-        }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Purchase(Transaction transaction)
-        //{
-
-        //}
-
+    
         protected override void Dispose(bool disposing)
         {
             if (disposing)

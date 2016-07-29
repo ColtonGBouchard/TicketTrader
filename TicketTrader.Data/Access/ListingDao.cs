@@ -20,18 +20,19 @@ namespace TicketTrader.Data.Access
 
         public List<Listing> GetAll()
         {
-            return context.Listings.ToList();
+            var listings = context.Listings.Where(l => l.IsActive == true).ToList();
+            return listings;
         }
 
         public Listing GetById(int id)
         {
-            return context.Listings.Find(id);
+            return context.Listings.Where(l => l.IsActive==true && l.ListingId == id).First();
         }
 
         public List<Listing> GetListById(int id)
         {
             var selectedListing = (from l in context.Listings
-                                   where l.ListingId == id
+                                   where l.ListingId == id && l.IsActive == true
                                    select l).ToList();
 
             return selectedListing;
@@ -59,7 +60,7 @@ namespace TicketTrader.Data.Access
         public List<Listing> GetListingsForEvent(int id)
         {
             var listingsForEvent = (from l in context.Listings
-                                    where l.EventId == id
+                                    where l.EventId == id && l.IsActive == true
                                     select l).ToList();
 
             return listingsForEvent;

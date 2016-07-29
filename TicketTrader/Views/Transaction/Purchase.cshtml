@@ -1,0 +1,56 @@
+﻿@model TicketTrader.Models.TransactionViewModel
+@using Microsoft.AspNet.Identity;
+
+
+@{
+    ViewBag.Title = "Purchase";
+}
+
+
+
+<div id="purchaseInfo" class="panel panel-info pull-left">
+    <div class="panel-heading">@Model.Event.Band.Name</div>
+
+
+    <ul class="list-group">
+        <li class="list-group-item">@Model.Event.Date</li>
+        <li class="list-group-item">@Model.Event.Venue</li>
+        <li class="list-group-item">$@Model.Listings.First().Price</li>
+    </ul>
+</div>
+
+
+<div class="demo-container">
+    <div class="card-wrapper"></div>
+
+    <div class="form-container active">
+        <form action="@Url.Action("Purchase", "Transaction")" class="purchaseForm" method="post">
+            <div id="ccInput">
+                <input placeholder="Card number" type="text" name="number" class="number">
+                <input placeholder="Full name" type="text" name="name" class="name">
+                <input placeholder="MM/YY" type="text" name="expiry" class="expiry">
+                <input placeholder="CVC" type="text" name="cvc" class="cvc">
+                <input type="hidden" value="@Model.Listings.First().ListingId" name="ListingId"/>
+                <input type="hidden" value="@Model.Listings.First().UserId" name="SellerId"/>
+                <input id="submitPurchase" type="submit" value="Submit" class="btn btn-primary"/>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $('.purchaseForm').card({
+            // a selector or jQuery object for the container
+            // where you want the card to appear
+            container: '.card-wrapper', // *required*
+            numberInput: '.number', // optional — default input[name="number"]
+            expiryInput: '.expiry', // optional — default input[name="expiry"]
+            cvcInput: '.cvc', // optional — default input[name="cvc"]
+            nameInput: '.name', // optional - defaults input[name="name"]
+            formatting: true // optional - default true
+        });
+    </script>
+ }

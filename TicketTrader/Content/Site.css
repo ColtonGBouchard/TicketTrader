@@ -66,3 +66,16 @@ input[type="checkbox"].input-validation-error {
     margin: 10px auto;
     display: block;
 }
+
+#purchaseInfo{
+    width: 200px;
+    margin-top: 25px;
+}
+
+#ccInput{
+    text-align: center;
+}
+
+#submitPurchase{
+    margin-top: 5px;
+}

@@ -61,6 +61,7 @@
     <Compile Include="Access\BandDao.cs" />
     <Compile Include="Access\EventDao.cs" />
     <Compile Include="Access\ListingDao.cs" />
+    <Compile Include="Access\TransactionDao.cs" />
     <Compile Include="Models\Band.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />

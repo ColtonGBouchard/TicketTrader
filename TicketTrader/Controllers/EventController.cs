@@ -35,12 +35,12 @@ namespace TicketTrader.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="EventId,BandId,Date,Venue,City,State")] Event @event)
+        public ActionResult Create(Event @event)
         {
             if (ModelState.IsValid)
             {
-                db.Events.Add(@event);
-                db.SaveChanges();
+                var eventDao = new EventDao(db);
+                eventDao.Add(@event);
                 return RedirectToAction("Upcoming", new { id = @event.BandId });
             }
 
