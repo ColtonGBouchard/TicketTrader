@@ -5,6 +5,13 @@
 }
 
 <h2>Bands</h2>
+
+<div id="eventSearch">
+    <form method="get">
+        <input type="search" name="searchTerm" />
+        <input type="submit" value="Search" class="btn btn-info" />
+    </form>
+</div>
 <p>
     @if (User.IsInRole("Admin"))
     {

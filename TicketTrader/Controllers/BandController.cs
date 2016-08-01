@@ -18,10 +18,10 @@ namespace TicketTrader.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm)
         {
             var bandDao = new BandDao(db);
-            return View(bandDao.GetAll());
+            return View(bandDao.GetAll(searchTerm));
         }
 
        

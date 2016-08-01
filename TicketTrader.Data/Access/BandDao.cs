@@ -17,13 +17,9 @@ namespace TicketTrader.Data.Access
             this.context = context;
         }
 
-        public List<Band> GetAll()
+        public List<Band> GetAll(string searchTerm)
         {
-            List<Band> bands = (from b in context.Bands
-                                orderby b.Name
-                                select b).ToList();
-
-            return bands;
+            return context.Bands.OrderBy(b=>b.Name).Where(b => searchTerm == null || b.Name.Contains(searchTerm)).ToList();
         }
 
         public Band GetById(int id)

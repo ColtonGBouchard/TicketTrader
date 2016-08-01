@@ -31,11 +31,7 @@ namespace TicketTrader.Data.Access
 
         public List<Listing> GetListById(int id)
         {
-            var selectedListing = (from l in context.Listings
-                                   where l.ListingId == id && l.IsActive == true
-                                   select l).ToList();
-
-            return selectedListing;
+            return context.Listings.Where(l => l.ListingId == id && l.IsActive == true).ToList();   
         }
 
         public void Delete(Listing listing)
@@ -59,11 +55,7 @@ namespace TicketTrader.Data.Access
 
         public List<Listing> GetListingsForEvent(int id)
         {
-            var listingsForEvent = (from l in context.Listings
-                                    where l.EventId == id && l.IsActive == true
-                                    select l).ToList();
-
-            return listingsForEvent;
+            return context.Listings.Where(l => l.EventId == id && l.IsActive == true).ToList();   
         }
     }
 }

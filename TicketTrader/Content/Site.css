@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: rgba(234, 239, 255, 0.75);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -81,15 +82,33 @@ input[type="checkbox"].input-validation-error {
 }
 
 #errorContainer{
-    margin-top: 2.5em;
+    
     border: 1px solid rgb(0, 148, 255);
     border-radius: 7px;
     text-align: center;
+    height: 325px;
+    background-color: rgba(255, 255, 255, 0.70);
+    justify-content: center;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 2.5em;
  
 }
 
 #errorContainer h4{
     padding: 10px;
+    
+}
+
+#imgDiv{
+    padding: 5px;
+}
+
+#imgDiv img{
+    border-radius: 7px;
+    border: 10px solid rgb(0, 148, 255);
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 }
 
 .navbar{
@@ -117,4 +136,10 @@ input[type="checkbox"].input-validation-error {
     margin-top: 5px;
 }
 
+#eventSearch{
+    padding-bottom: 10px;
+}
 
+.btn-info{
+    background-color: rgba(0, 148, 255, 0.70);
+}

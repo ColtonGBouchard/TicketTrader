@@ -19,10 +19,10 @@ namespace TicketTrader.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm = null)
         {
             var eventDao = new EventDao(db);
-            return View(eventDao.GetAll());
+            return View(eventDao.GetAll(searchTerm));
         }
 
  
@@ -97,12 +97,12 @@ namespace TicketTrader.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Upcoming(int id)
+        public ActionResult Upcoming(int id, string searchTerm)
         {
             DisplayEventViewModel model = new DisplayEventViewModel();
 
             var eventDao = new EventDao(db);
-            var events = eventDao.GetEventsByBand(id);
+            var events = eventDao.GetEventsByBand(id, searchTerm);
             
             if (events == null)
             {
