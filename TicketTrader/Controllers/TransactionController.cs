@@ -27,12 +27,7 @@ namespace TicketTrader.Controllers
             return View(model);
         }
 
-        //[HttpGet]
-        //public ActionResult SubmitPurchase()
-        //{
-        //    return View();
-        //}
-
+   
         [HttpPost]
         public ActionResult Purchase(TransactionViewModel viewModel)
         {
@@ -43,7 +38,13 @@ namespace TicketTrader.Controllers
             var transactionDao = new TransactionDao(db);
             transactionDao.SubmitPurchase(seller, buyer, listing);
 
-            return RedirectToAction("Index", "Band");
+            return RedirectToAction("Success", "Transaction");
+        }
+
+        [HttpGet]
+        public ActionResult Success()
+        {
+            return View();
         }
 	}
 }

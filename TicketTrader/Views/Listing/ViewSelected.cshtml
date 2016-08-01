@@ -5,7 +5,8 @@
     ViewBag.Title = "ViewSelected";
 }
 
-<div>
+<div class="panel panel-primary" id="selectedListing">
+<div class="panel-heading">
     <h2>@Model.Listings.First().Title</h2>
     <h4>@Model.Event.Band.Name -- @Model.Event.Date, @Model.Event.Venue</h4>
     
@@ -21,23 +22,24 @@
 
 @if (Model.Listings == null)
 {
-    <div id="selectedBody">
+    <div id="selectedBody" class="panel-body">
         <h3>Listing not found</h3>
     </div>
 }
 else
 {
-     <div id="selectedBody">  
+     <div id="selectedBody" class="panel-body">  
          <h4>
              @Model.Listings.First().Description
          </h4>
      </div> 
 }
+</div>
 
 @if (User.Identity.GetUserId() != Model.Listings.First().UserId)
 {
-    if(@Model.Listings.First().ListingTypeId == 1)
-    { 
+    if (@Model.Listings.First().ListingTypeId == 1)
+    {
         @Html.ActionLink("Purchase Tickets", "Purchase", "Transaction", new { id = @Model.Listings.First().ListingId }, new { @class = "btn btn-default" })
     }
     else
@@ -45,16 +47,13 @@ else
         <div>
             <div>
                 <h5>Contact the user to make an offer on this listing:</h5>
-                <textarea id="offerTextArea">
-
-                </textarea>
+                <textarea id="offerTextArea"></textarea>
             </div>
-            
+
             <div>
-                <button class="btn btn-default">Send Offer</button>
+                <button class="btn btn-primary">Send Offer</button>
             </div>
         </div>
     }
 }
-
 

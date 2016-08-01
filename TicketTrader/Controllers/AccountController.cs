@@ -52,7 +52,7 @@ namespace TicketTrader.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Band");
                 }
                 else
                 {

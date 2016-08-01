@@ -33,6 +33,9 @@
                 <input type="hidden" value="@Model.Listings.First().ListingId" name="ListingId"/>
                 <input type="hidden" value="@Model.Listings.First().UserId" name="SellerId"/>
                 <input id="submitPurchase" type="submit" value="Submit" class="btn btn-primary"/>
+                <div>
+                    @Html.ActionLink("Cancel", "ViewListingsByEvent", "Listing", new { id = @Model.Listings.First().EventId}, new {@class="btn btn-default"})
+                </div>
             </div>
             
         </form>

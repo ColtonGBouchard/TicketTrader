@@ -19,7 +19,7 @@ namespace TicketTrader.Data.Access
 
         public List<Event> GetAll()
         {
-            return context.Events.ToList();
+            return context.Events.OrderBy(e => e.Date).ToList();
         }
 
         public Event GetById(int id)

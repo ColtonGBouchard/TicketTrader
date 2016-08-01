@@ -4,11 +4,9 @@
     ViewBag.Title = "All Upcoming Events";
 }
 
-<h2>Index</h2>
+<h2>All Upcoming Events</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -46,10 +44,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.State)
         </td>
+        @if (User.IsInRole("Admin"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
+            </td>
+        }
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EventId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EventId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EventId })
+            @Html.ActionLink("See listings for event", "ViewListingsByEvent", "Listing", new { id = item.EventId }, null)
         </td>
     </tr>
 }

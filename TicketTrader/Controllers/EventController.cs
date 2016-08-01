@@ -93,7 +93,7 @@ namespace TicketTrader.Controllers
             var eventDao = new EventDao(db);
             Event selectedEvent = eventDao.GetById(id);
             eventDao.Delete(selectedEvent);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Band");
         }
 
         [AllowAnonymous]

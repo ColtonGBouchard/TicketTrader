@@ -79,3 +79,42 @@ input[type="checkbox"].input-validation-error {
 #submitPurchase{
     margin-top: 5px;
 }
+
+#errorContainer{
+    margin-top: 2.5em;
+    border: 1px solid rgb(0, 148, 255);
+    border-radius: 7px;
+    text-align: center;
+ 
+}
+
+#errorContainer h4{
+    padding: 10px;
+}
+
+.navbar{
+    background-color: rgba(0, 148, 255, 0.70);
+    box-shadow: 0 0 3px 0;
+}
+
+.navbar .nav>li>a{
+    color: white;
+}
+
+.navbar .navbar-header>a{
+    color: white;
+}
+
+#selectedListing{
+    margin-top: 10px;
+}
+
+.panel-primary .panel-heading{
+   background-color: rgba(0, 148, 255, 0.70);
+}
+
+#ccInput a{
+    margin-top: 5px;
+}
+
+

@@ -163,6 +163,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BandController.cs" />
+    <Compile Include="Controllers\ErrorController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\ListingController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
@@ -271,6 +274,8 @@
     <Content Include="Views\Transaction\Purchase.cshtml" />
     <Content Include="Views\Account\AccessDenied.cshtml" />
     <Content Include="Views\Transaction\SubmitPurchase.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Transaction\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
