@@ -29,7 +29,22 @@ namespace TicketTrader.Data.Access
 
         public void Delete(Band band)
         {
+            var listings = context.Listings.Where(l => l.Event.Band.BandId == band.BandId);
+            var events = context.Events.Where(e => e.BandId == band.BandId);
+
+            foreach(var l in listings)
+            {
+                context.Listings.Remove(l);
+            }
+
+            foreach(var e in events)
+            {
+                context.Events.Remove(e);
+            }
+
+            
             context.Bands.Remove(band);
+            
             context.SaveChanges();
         }
 

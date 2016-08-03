@@ -68,7 +68,7 @@ namespace TicketTrader.Controllers
             {
                 var eventDao = new EventDao(db);
                 eventDao.Edit(selectedEvent);
-                return RedirectToAction("Index");
+                return RedirectToAction("Upcoming", "Event", new { id = selectedEvent.BandId });
             }
             return View(selectedEvent);
         }
@@ -93,7 +93,8 @@ namespace TicketTrader.Controllers
             var eventDao = new EventDao(db);
             Event selectedEvent = eventDao.GetById(id);
             eventDao.Delete(selectedEvent);
-            return RedirectToAction("Index", "Band");
+            //return RedirectToAction("Index", "Band");
+            return RedirectToAction("Upcoming", "Event", new { id = selectedEvent.BandId });
         }
 
         [AllowAnonymous]

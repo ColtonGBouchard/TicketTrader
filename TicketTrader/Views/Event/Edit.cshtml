@@ -18,9 +18,9 @@
         @Html.HiddenFor(model => model.EventId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BandId, new { @class = "control-label col-md-2" })
+            @Html.HiddenFor(model => model.BandId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BandId)
+                @Html.HiddenFor(model => model.BandId)
                 @Html.ValidationMessageFor(model => model.BandId)
             </div>
         </div>

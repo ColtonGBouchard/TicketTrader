@@ -18,13 +18,7 @@ namespace TicketTrader.Controllers
     {
         private TicketTraderContext db = new TicketTraderContext();
 
-        [HttpGet]
-        public ActionResult Index()
-        {
-            var listingDao = new ListingDao(db);
-            return View(listingDao.GetAll());
-        }
-
+        
         [HttpGet]
         public ActionResult Create(int eventId)
         {
@@ -70,7 +64,7 @@ namespace TicketTrader.Controllers
             {
                 var listingDao = new ListingDao(db);
                 listingDao.Edit(listing);
-                return RedirectToAction("Index");
+                return RedirectToAction("ViewListingsByEvent", "Listing", new { id = listing.EventId });
             }
             return View(listing);
         }

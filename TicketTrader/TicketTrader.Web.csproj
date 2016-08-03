@@ -255,17 +255,10 @@
     <Content Include="Views\Band\Index.cshtml" />
     <Content Include="Views\Event\Create.cshtml" />
     <Content Include="Views\Event\Delete.cshtml" />
-    <Content Include="Views\Event\Details.cshtml" />
     <Content Include="Views\Event\Edit.cshtml" />
     <Content Include="Views\Event\Index.cshtml" />
-    <Content Include="Views\Transaction\Create.cshtml" />
-    <Content Include="Views\Transaction\Delete.cshtml" />
-    <Content Include="Views\Transaction\Details.cshtml" />
-    <Content Include="Views\Transaction\Edit.cshtml" />
-    <Content Include="Views\Transaction\Index.cshtml" />
     <Content Include="Views\Event\Upcoming.cshtml" />
     <Content Include="Views\Listing\Delete.cshtml" />
-    <Content Include="Views\Listing\Details.cshtml" />
     <Content Include="Views\Listing\Edit.cshtml" />
     <Content Include="Views\Listing\ViewListingsByEvent.cshtml" />
     <Content Include="Views\Shared\_Events.cshtml" />
