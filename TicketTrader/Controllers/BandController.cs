@@ -16,11 +16,15 @@ namespace TicketTrader.Controllers
     {
         private TicketTraderContext db = new TicketTraderContext();
 
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Index(string searchTerm)
         {
             var bandDao = new BandDao(db);
+
+            logger.Debug("Entered Band Index");
             return View(bandDao.GetAll(searchTerm));
         }
 
@@ -40,6 +44,7 @@ namespace TicketTrader.Controllers
             {
                 var bandDao = new BandDao(db);
                 bandDao.Add(band);
+                logger.Debug("Created band--" + band.Name);
                 return RedirectToAction("Index");
             }
 
@@ -67,6 +72,7 @@ namespace TicketTrader.Controllers
             {
                 var bandDao = new BandDao(db);
                 bandDao.Edit(band);
+                logger.Debug("Edited Band--" + band.Name);
                 return RedirectToAction("Index");
             }
             return View(band);
@@ -92,6 +98,7 @@ namespace TicketTrader.Controllers
             var bandDao = new BandDao(db);
             var band = bandDao.GetById(id);
             bandDao.Delete(band);
+            logger.Debug("Deleted band--" + band.Name);
             return RedirectToAction("Index");
         }
 

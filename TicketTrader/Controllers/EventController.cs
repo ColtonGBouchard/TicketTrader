@@ -12,16 +12,20 @@ using TicketTrader.Data.Access;
 
 namespace TicketTrader.Controllers
 {
+
     [Authorize(Roles="Admin")]
     public class EventController : Controller
     {
         private TicketTraderContext db = new TicketTraderContext();
+
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Index(string searchTerm = null)
         {
             var eventDao = new EventDao(db);
+            logger.Debug("Entered Event Index");
             return View(eventDao.GetAll(searchTerm));
         }
 
@@ -29,6 +33,7 @@ namespace TicketTrader.Controllers
         [HttpGet]
         public ActionResult Create(int bandId)
         {
+            logger.Debug("Entered Event Create");
             return View();
         }
 
@@ -41,6 +46,7 @@ namespace TicketTrader.Controllers
             {
                 var eventDao = new EventDao(db);
                 eventDao.Add(@event);
+                logger.Debug("Created event--" + @event.EventId);
                 return RedirectToAction("Upcoming", new { id = @event.BandId });
             }
 
@@ -56,6 +62,7 @@ namespace TicketTrader.Controllers
             {
                 return HttpNotFound();
             }
+            logger.Debug("Entered Event Edit");
             return View(selectedEvent);
         }
 
@@ -68,6 +75,7 @@ namespace TicketTrader.Controllers
             {
                 var eventDao = new EventDao(db);
                 eventDao.Edit(selectedEvent);
+                logger.Debug("Edited event--" + selectedEvent.EventId);
                 return RedirectToAction("Upcoming", "Event", new { id = selectedEvent.BandId });
             }
             return View(selectedEvent);
@@ -82,6 +90,7 @@ namespace TicketTrader.Controllers
             {
                 return HttpNotFound();
             }
+            logger.Debug("Entered Event Delete");
             return View(selectedEvent);
         }
 
@@ -93,7 +102,7 @@ namespace TicketTrader.Controllers
             var eventDao = new EventDao(db);
             Event selectedEvent = eventDao.GetById(id);
             eventDao.Delete(selectedEvent);
-            //return RedirectToAction("Index", "Band");
+            logger.Debug("Deleted event--" + selectedEvent.EventId);
             return RedirectToAction("Upcoming", "Event", new { id = selectedEvent.BandId });
         }
 
@@ -115,7 +124,9 @@ namespace TicketTrader.Controllers
             var bandDao = new BandDao(db);
             var band = bandDao.GetById(id);
 
-            model.Band = band;           
+            model.Band = band;
+
+            logger.Debug("Entered Event Upcoming");
 
             return View(model);
         }

@@ -12,6 +12,8 @@ namespace TicketTrader.Controllers
     {
         private TicketTraderContext db = new TicketTraderContext();
 
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         [HttpGet]
         public ActionResult Purchase(int id)
         {
@@ -24,6 +26,7 @@ namespace TicketTrader.Controllers
             var totalPrice = model.Listings.First().Quantity * model.Listings.First().Price;
             model.Listings.First().Price = totalPrice;
 
+            logger.Debug("Transaction Purchase Entered");
             return View(model);
         }
 
@@ -38,12 +41,15 @@ namespace TicketTrader.Controllers
             var transactionDao = new TransactionDao(db);
             transactionDao.SubmitPurchase(seller, buyer, listing);
 
+            logger.Debug("Listing " + listing + " purchased");
+
             return RedirectToAction("Success", "Transaction");
         }
 
         [HttpGet]
         public ActionResult Success()
         {
+            logger.Debug("Transaction Success Entered");
             return View();
         }
 	}

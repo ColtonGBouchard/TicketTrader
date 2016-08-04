@@ -1,0 +1,48 @@
+DEBUG 2016-08-03 14:42:54,583   687ms Startup                ConfigureAuth      - Logging is enabled
+DEBUG 2016-08-03 14:42:55,015  1118ms BandController         Index              - Entered Band Index
+DEBUG 2016-08-03 14:43:07,026 13129ms BandController         Create             - Created band--Grateful Dead
+DEBUG 2016-08-03 14:43:07,038 13141ms BandController         Index              - Entered Band Index
+DEBUG 2016-08-03 14:43:13,527 19630ms BandController         Edit               - Edited Band--The Dead
+DEBUG 2016-08-03 14:43:13,534 19637ms BandController         Index              - Entered Band Index
+DEBUG 2016-08-03 14:43:18,118 24221ms BandController         DeleteConfirmed    - Deleted band--The Dead
+DEBUG 2016-08-03 14:43:18,126 24229ms BandController         Index              - Entered Band Index
+DEBUG 2016-08-03 15:41:53,978   126ms Startup                ConfigureAuth      - Logging is enabled
+DEBUG 2016-08-03 15:41:54,341   489ms BandController         Index              - Entered Band Index
+DEBUG 2016-08-03 15:42:21,582 27730ms EventController        Index              - Entered Event Index
+DEBUG 2016-08-03 15:42:28,190 34338ms BandController         Index              - Entered Band Index
+DEBUG 2016-08-03 15:42:29,962 36110ms EventController        Upcoming           - Entered Event Upcoming
+DEBUG 2016-08-03 15:42:31,068 37216ms EventController        Create             - Entered Event Create
+DEBUG 2016-08-03 15:42:56,501 62649ms EventController        Create             - Created event--1020
+DEBUG 2016-08-03 15:42:56,519 62667ms EventController        Upcoming           - Entered Event Upcoming
+DEBUG 2016-08-03 15:43:00,853 67001ms EventController        Edit               - Entered Event Edit
+DEBUG 2016-08-03 15:43:14,424 80572ms EventController        Edit               - Edited event--1020
+DEBUG 2016-08-03 15:43:14,439 80587ms EventController        Upcoming           - Entered Event Upcoming
+DEBUG 2016-08-03 15:43:17,134 83282ms EventController        Delete             - Entered Event Delete
+DEBUG 2016-08-03 15:43:18,621 84769ms EventController        DeleteConfirmed    - Deleted event--1020
+DEBUG 2016-08-03 15:43:18,633 84781ms EventController        Upcoming           - Entered Event Upcoming
+DEBUG 2016-08-03 15:43:22,450 88598ms ListingController      iewListingsByEvent - Entered ViewListingsByEvent--11
+DEBUG 2016-08-03 15:43:24,406 90554ms ListingController      Create             - Entered Listing Create
+DEBUG 2016-08-03 15:43:33,270 99418ms ListingController      Create             - Created listing--1027
+DEBUG 2016-08-03 15:43:33,283 99431ms ListingController      iewListingsByEvent - Entered ViewListingsByEvent--11
+DEBUG 2016-08-03 15:43:35,737 101885ms ListingController      Edit               - Entered Listing Edit
+DEBUG 2016-08-03 15:43:39,471 105619ms ListingController      Edit               - Edited listing--1027
+DEBUG 2016-08-03 15:43:39,483 105631ms ListingController      iewListingsByEvent - Entered ViewListingsByEvent--11
+DEBUG 2016-08-03 15:43:41,883 108031ms ListingController      Delete             - Entered Listing Delete
+DEBUG 2016-08-03 15:43:43,288 109436ms ListingController      DeleteConfirmed    - Deleted listing--1027
+DEBUG 2016-08-03 15:43:43,300 109448ms ListingController      iewListingsByEvent - Entered ViewListingsByEvent--11
+DEBUG 2016-08-03 15:43:44,292 110440ms ListingController      Create             - Entered Listing Create
+DEBUG 2016-08-03 15:43:51,067 117215ms ListingController      Create             - Created listing--1028
+DEBUG 2016-08-03 15:43:51,078 117226ms ListingController      iewListingsByEvent - Entered ViewListingsByEvent--11
+DEBUG 2016-08-03 15:43:55,120 121268ms ListingController      Create             - Entered Listing Create
+DEBUG 2016-08-03 15:44:06,063 132211ms ListingController      Create             - Created listing--1029
+DEBUG 2016-08-03 15:44:06,073 132221ms ListingController      iewListingsByEvent - Entered ViewListingsByEvent--11
+DEBUG 2016-08-03 15:44:08,896 135044ms BandController         Index              - Entered Band Index
+DEBUG 2016-08-03 15:44:18,323 144471ms BandController         Index              - Entered Band Index
+DEBUG 2016-08-03 15:44:20,434 146582ms EventController        Upcoming           - Entered Event Upcoming
+DEBUG 2016-08-03 15:44:21,825 147973ms ListingController      iewListingsByEvent - Entered ViewListingsByEvent--11
+DEBUG 2016-08-03 15:44:23,411 149559ms ListingController      ViewSelected       - Enter ViewSelected--1029
+DEBUG 2016-08-03 15:44:25,173 151321ms TransactionController  Purchase           - Transaction Purchase Entered
+DEBUG 2016-08-03 15:44:42,643 168791ms TransactionController  Purchase           - Listing 1029 purchased
+DEBUG 2016-08-03 15:44:42,653 168801ms TransactionController  Success            - Transaction Success Entered
+DEBUG 2016-08-03 15:44:44,637 170785ms BandController         Index              - Entered Band Index
+DEBUG 2016-08-03 15:45:30,391 216539ms BandController         Index              - Entered Band Index

@@ -17,11 +17,13 @@ namespace TicketTrader.Controllers
     public class ListingController : Controller
     {
         private TicketTraderContext db = new TicketTraderContext();
-
         
+        readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         [HttpGet]
         public ActionResult Create(int eventId)
         {
+            logger.Debug("Entered Listing Create");
             return View();
         }
 
@@ -36,6 +38,7 @@ namespace TicketTrader.Controllers
             {
                 var listingDao = new ListingDao(db);
                 listingDao.Add(listing);
+                logger.Debug("Created listing--" + listing.ListingId);
                 return RedirectToAction("ViewListingsByEvent", "Listing", new { id = listing.EventId });
             }
 
@@ -52,6 +55,7 @@ namespace TicketTrader.Controllers
             {
                 return HttpNotFound();
             }
+            logger.Debug("Entered Listing Edit");
             return View(listing);
         }
 
@@ -64,6 +68,7 @@ namespace TicketTrader.Controllers
             {
                 var listingDao = new ListingDao(db);
                 listingDao.Edit(listing);
+                logger.Debug("Edited listing--" + listing.ListingId);
                 return RedirectToAction("ViewListingsByEvent", "Listing", new { id = listing.EventId });
             }
             return View(listing);
@@ -79,6 +84,7 @@ namespace TicketTrader.Controllers
             {
                 return HttpNotFound();
             }
+            logger.Debug("Entered Listing Delete");
             return View(listing);
         }
 
@@ -91,6 +97,7 @@ namespace TicketTrader.Controllers
             var listingDao = new ListingDao(db);
             var listing = listingDao.GetById(id);
             listingDao.Delete(listing);
+            logger.Debug("Deleted listing--" + listing.ListingId);
             return RedirectToAction("ViewListingsByEvent", "Listing", new { id = listing.EventId });
         }
 
@@ -111,6 +118,7 @@ namespace TicketTrader.Controllers
                 model.Event = selectedEvent;
             }
 
+            logger.Debug("Entered ViewListingsByEvent--" + id);
             return View(model);
         }
 
@@ -131,7 +139,7 @@ namespace TicketTrader.Controllers
                 var selectedEvent = eventDao.GetById(id);
                 model.Event = selectedEvent;
             }
-
+            logger.Debug("Enter ViewSelected--" + id);
             return View(model);
         }
 
