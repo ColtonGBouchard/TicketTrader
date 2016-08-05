@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TicketTrader.Models;
 
 namespace TicketTrader.Data.Access
@@ -17,6 +14,7 @@ namespace TicketTrader.Data.Access
             this.context = context;
         }
 
+
         public List<Event> GetAll(string searchTerm)
         {
             return context.Events.OrderBy(e => e.Date).ThenBy(e => e.Band.Name)
@@ -24,10 +22,12 @@ namespace TicketTrader.Data.Access
                    .ToList();
         }
 
+
         public Event GetById(int id)
         {
             return context.Events.Find(id);
         }
+
 
         public void Delete(Event selectedEvent)
         {
@@ -35,11 +35,13 @@ namespace TicketTrader.Data.Access
             context.SaveChanges();
         }
 
+
         public void Add(Event newEvent)
         {
             context.Events.Add(newEvent);
             context.SaveChanges();
         }
+
 
         public void Edit(Event selectedEvent)
         {
@@ -47,16 +49,11 @@ namespace TicketTrader.Data.Access
             context.SaveChanges();
         }
 
-        public List<Event> GetEventsByBand(int id, string searchTerm) 
+
+        public List<Event> GetEventsByBand(int id, string searchTerm)
         {
-            //var events = (from e in context.Events
-            //              where e.Band.BandId == id
-            //              orderby e.Date
-            //              select e);
-
-            return context.Events.OrderBy(e=>e.Date).Where(e => e.Band.BandId == id && ( searchTerm == null || e.City.StartsWith(searchTerm) || e.State.StartsWith(searchTerm) || e.Venue.Contains(searchTerm)))
+            return context.Events.OrderBy(e => e.Date).Where(e => e.Band.BandId == id && (searchTerm == null || e.City.StartsWith(searchTerm) || e.State.StartsWith(searchTerm) || e.Venue.Contains(searchTerm)))
                    .ToList();
-
         }
     }
 }

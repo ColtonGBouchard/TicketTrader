@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using TicketTrader.Models;
-using TicketTrader.Data.Access;
+﻿using System.Web.Mvc; 
+using TicketTrader.Models;  
+using TicketTrader.Data.Access; 
 
 namespace TicketTrader.Controllers
 {
     [Authorize(Roles="Admin")]
-    public class BandController : Controller
+    public class BandController : Controller 
     {
         private TicketTraderContext db = new TicketTraderContext();
-
+        
         readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         [HttpGet]

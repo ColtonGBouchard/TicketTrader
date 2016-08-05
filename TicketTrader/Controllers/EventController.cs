@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using TicketTrader.Models;
 using TicketTrader.Data.Access;
 
@@ -22,7 +15,7 @@ namespace TicketTrader.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index(string searchTerm = null)
+        public ActionResult Index(string searchTerm)
         {
             var eventDao = new EventDao(db);
             logger.Debug("Entered Event Index");
@@ -40,17 +33,17 @@ namespace TicketTrader.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Event @event)
+        public ActionResult Create(Event newEvent)
         {
             if (ModelState.IsValid)
             {
                 var eventDao = new EventDao(db);
-                eventDao.Add(@event);
-                logger.Debug("Created event--" + @event.EventId);
-                return RedirectToAction("Upcoming", new { id = @event.BandId });
+                eventDao.Add(newEvent);
+                logger.Debug("Created event--" + newEvent.EventId);
+                return RedirectToAction("Upcoming", new { id = newEvent.BandId });
             }
 
-            return View(@event);
+            return View(newEvent);
         }
 
         [HttpGet]

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace TicketTrader.Models
 {
@@ -9,12 +6,7 @@ namespace TicketTrader.Models
     {
         public int BandId { get; set; }
         public List<int> EventIds { get; set; }
-        //public string BandName { get; set; }
-        //public DateTime Date { get; set; }
-        //public string Venue { get; set; }
-        //public string City { get; set; }
-        //public string State { get; set; }
-
+      
         public Band Band { get; set; }
         public List<Event> Events { get; set; }
         

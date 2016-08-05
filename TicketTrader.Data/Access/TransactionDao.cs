@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using TicketTrader.Models;
 
 namespace TicketTrader.Data.Access
@@ -16,6 +11,7 @@ namespace TicketTrader.Data.Access
         {
             this.context = context;
         }
+
 
         public void SubmitPurchase(string sellerId, string buyerId, int listingId)
         {

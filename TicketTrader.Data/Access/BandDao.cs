@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TicketTrader.Models;
 
 namespace TicketTrader.Data.Access
@@ -17,22 +14,25 @@ namespace TicketTrader.Data.Access
             this.context = context;
         }
 
+
         public List<Band> GetAll(string searchTerm)
         {
             return context.Bands.OrderBy(b=>b.Name).Where(b => searchTerm == null || b.Name.Contains(searchTerm)).ToList();
         }
+
 
         public Band GetById(int id)
         {
             return context.Bands.Find(id);
         }
 
+
         public void Delete(Band band)
         {
             var listings = context.Listings.Where(l => l.Event.Band.BandId == band.BandId);
             var events = context.Events.Where(e => e.BandId == band.BandId);
 
-            foreach(var l in listings)
+            foreach (var l in listings)
             {
                 context.Listings.Remove(l);
             }
@@ -42,17 +42,18 @@ namespace TicketTrader.Data.Access
                 context.Events.Remove(e);
             }
 
-            
             context.Bands.Remove(band);
             
             context.SaveChanges();
         }
+
 
         public void Add(Band band)
         {
             context.Bands.Add(band);
             context.SaveChanges();
         }
+
 
         public void Edit(Band band)
         {
