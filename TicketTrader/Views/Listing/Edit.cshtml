@@ -93,7 +93,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "ViewListingsByEvent", "Listing", new { id = @Model.EventId }, null)
 </div>
 
 @section Scripts {

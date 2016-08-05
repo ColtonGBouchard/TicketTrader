@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 
 namespace TicketTrader.Models
 {
-    public class TransactionViewModel
+    public class DisplaySelectedListingViewModel
     {
-        public TransactionViewModel()
+        public DisplaySelectedListingViewModel()
         {
         }
 
-        public TransactionViewModel(Listing listing)
+        public DisplaySelectedListingViewModel(Listing listing)
         {
             this.Listing = listing;
             
@@ -30,8 +31,5 @@ namespace TicketTrader.Models
 
         public Listing Listing { get; set; }
         public Event Event { get; set; }
-
-        public string SellerId { get; set; }
-        public string UserId { get; set; }
     }
 }

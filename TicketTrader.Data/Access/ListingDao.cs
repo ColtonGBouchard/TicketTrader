@@ -29,12 +29,6 @@ namespace TicketTrader.Data.Access
         }
 
 
-        public List<Listing> GetListById(int id)
-        {
-            return context.Listings.Where(l => l.ListingId == id && l.IsActive == true).ToList();   
-        }
-
-
         public void Delete(Listing listing)
         {
             context.Listings.Remove(listing);

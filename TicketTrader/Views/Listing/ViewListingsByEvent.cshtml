@@ -55,7 +55,7 @@ else
                 @Html.ActionLink("View Listing", "ViewSelected", "Listing", new { id = item.ListingId}, null)
             </td>
 
-            @if(User.Identity.GetUserId() == item.UserId)
+            @if(User.Identity.GetUserId() == item.UserId || User.IsInRole("Admin"))
             { 
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id=item.ListingId }) |

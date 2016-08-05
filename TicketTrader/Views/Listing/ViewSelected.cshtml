@@ -1,4 +1,4 @@
-﻿@model TicketTrader.Models.DisplayListingsViewModel
+﻿@model TicketTrader.Models.DisplaySelectedListingViewModel
 @using Microsoft.AspNet.Identity;
 
 @{
@@ -7,20 +7,24 @@
 
 <div class="panel panel-primary" id="selectedListing">
 <div class="panel-heading">
-    <h2>@Model.Listings.First().Title</h2>
+    <h2>@Model.Listing.Title</h2>
     <h4>@Model.Event.Band.Name -- @Model.Event.Date, @Model.Event.Venue</h4>
     
-    @if(@Model.Listings.First().Quantity == 1)
+    @if(@Model.Listing.Quantity == 1 && @Model.Listing.ListingTypeId == 1)
     {
-        <h4>1 Ticket</h4>
+        <h4>1 Ticket -- $@Model.Listing.Price</h4>
+    }
+    else if (@Model.Listing.Quantity > 1 && @Model.Listing.ListingTypeId == 1)
+    {
+        <h4>@Model.Listing.Quantity Tickets -- $@Model.Listing.Price</h4>
     }
     else
     {
-        <h4>@Model.Listings.First().Quantity Tickets</h4>
+        <h4>@Model.Listing.Quantity Tickets</h4>
     }
 </div>
 
-@if (Model.Listings == null)
+@if (Model.Listing == null)
 {
     <div id="selectedBody" class="panel-body">
         <h3>Listing not found</h3>
@@ -30,17 +34,18 @@ else
 {
      <div id="selectedBody" class="panel-body">  
          <h4>
-             @Model.Listings.First().Description
+             @Model.Listing.Description
          </h4>
      </div> 
 }
 </div>
 
-@if (User.Identity.GetUserId() != Model.Listings.First().UserId)
+@if (User.Identity.GetUserId() != Model.Listing.UserId)
 {
-    if (@Model.Listings.First().ListingTypeId == 1)
+    if (@Model.Listing.ListingTypeId == 1)
     {
-        @Html.ActionLink("Purchase Tickets", "Purchase", "Transaction", new { id = @Model.Listings.First().ListingId }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Purchase Tickets", "Purchase", "Transaction", new { id = @Model.Listing.ListingId }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Back to List", "ViewListingsByEvent", "Listing", new { id = @Model.Listing.EventId }, new { @class="btn btn-default"})
     }
     else
     {
@@ -52,8 +57,17 @@ else
 
             <div>
                 <button class="btn btn-primary">Send Offer</button>
+                @Html.ActionLink("Back to List", "ViewListingsByEvent", "Listing", new { id = @Model.Listing.EventId }, new { @class = "btn btn-default" })
             </div>
+
+            
+
         </div>
     }
+}
+else
+{
+            @Html.ActionLink("Back to List", "ViewListingsByEvent", "Listing", new { id = @Model.Listing.EventId }, new { @class="btn btn-default"})
+
 }
 

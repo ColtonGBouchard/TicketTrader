@@ -121,9 +121,11 @@ namespace TicketTrader.Controllers
         {
             var listingDao = new ListingDao(db);
 
-            var selectedListing = listingDao.GetListById(id);
-            
-            var model = new DisplayListingsViewModel(selectedListing);
+            var selectedListing = listingDao.GetById(id);
+
+            selectedListing.Price = selectedListing.Price * selectedListing.Quantity;
+
+            var model = new DisplaySelectedListingViewModel(selectedListing);
 
 
             if(model.Event == null)
@@ -132,6 +134,7 @@ namespace TicketTrader.Controllers
                 var selectedEvent = eventDao.GetById(id);
                 model.Event = selectedEvent;
             }
+
             logger.Debug("Enter ViewSelected--" + id);
             return View(model);
         }

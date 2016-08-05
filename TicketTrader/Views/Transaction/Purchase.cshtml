@@ -15,7 +15,7 @@
     <ul class="list-group">
         <li class="list-group-item">@Model.Event.Date</li>
         <li class="list-group-item">@Model.Event.Venue</li>
-        <li class="list-group-item">$@Model.Listings.First().Price</li>
+        <li class="list-group-item">$@Model.Listing.Price</li>
     </ul>
 </div>
 
@@ -30,11 +30,11 @@
                 <input placeholder="Full name" type="text" name="name" class="name">
                 <input placeholder="MM/YY" type="text" name="expiry" class="expiry">
                 <input placeholder="CVC" type="text" name="cvc" class="cvc">
-                <input type="hidden" value="@Model.Listings.First().ListingId" name="ListingId"/>
-                <input type="hidden" value="@Model.Listings.First().UserId" name="SellerId"/>
+                <input type="hidden" value="@Model.Listing.ListingId" name="ListingId"/>
+                <input type="hidden" value="@Model.Listing.UserId" name="SellerId"/>
                 <input id="submitPurchase" type="submit" value="Submit" class="btn btn-primary"/>
                 <div>
-                    @Html.ActionLink("Cancel", "ViewListingsByEvent", "Listing", new { id = @Model.Listings.First().EventId}, new {@class="btn btn-default"})
+                    @Html.ActionLink("Cancel", "ViewListingsByEvent", "Listing", new { id = @Model.Listing.EventId}, new {@class="btn btn-default"})
                 </div>
             </div>
             

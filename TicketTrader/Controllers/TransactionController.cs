@@ -17,12 +17,12 @@ namespace TicketTrader.Controllers
         {
             var listingDao = new ListingDao(db);
 
-            var selectedListing = listingDao.GetListById(id);
+            var selectedListing = listingDao.GetById(id);
 
             var model = new TransactionViewModel(selectedListing);
 
-            var totalPrice = model.Listings.First().Quantity * model.Listings.First().Price;
-            model.Listings.First().Price = totalPrice;
+            var totalPrice = model.Listing.Quantity * model.Listing.Price;
+            model.Listing.Price = totalPrice;
 
             logger.Debug("Transaction Purchase Entered");
             return View(model);

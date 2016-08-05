@@ -15,7 +15,7 @@
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
+        <div class="form-group" id="listingTypeDropdown">
             @{
                 List<SelectListItem> listItems = new List<SelectListItem>();
                 listItems.Add(new SelectListItem
@@ -43,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Title)
+                @Html.TextBoxFor(model => model.Title, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.Title)
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description)
+                @Html.TextBoxFor(model => model.Description, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.Description)
             </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Quantity)
+                @Html.TextBoxFor(model => model.Quantity, new { autocomplete = "off" })
                 @Html.ValidationMessageFor(model => model.Quantity)
             </div>
         </div>
@@ -67,7 +67,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Price) <p>(per ticket)</p>
+                @Html.TextBoxFor(model => model.Price, new { autocomplete = "off" }) <p>(per ticket)</p>
                 @Html.ValidationMessageFor(model => model.Price)
             </div>
         </div>
